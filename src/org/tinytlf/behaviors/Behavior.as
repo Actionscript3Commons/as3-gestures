@@ -4,7 +4,15 @@ package org.tinytlf.behaviors
 
     public class Behavior implements IBehavior
     {
-		final public function execute(events:Vector.<Event>):void
+		public function fail(event:Event):void
+		{
+		}
+		
+		public function execute(event:Event):void
+		{
+		}
+		
+		public function activate(events:Vector.<Event>):void
 		{
 			if(events.length <= 0)
 				return;
