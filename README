@@ -1,0 +1,18 @@
+AS3 Gestures is a library for defining event-based Gestures, and Behaviors to respond to Gestures.
+
+A Gesture is a collection filtered events. A gesture can listen for as many types of events as it requires, but it only fires when the events occur in a spceific order.
+
+When a Gesture is activated, it can respond to any number of Behavior objects. Behaviors implement IBehavior, and will receive a list of the Events that in the order they activated the Gesture.
+
+Example:
+"ABCGesture" listens to events A, B, and C, so ABCGesture will be notified every time events A, B, and C are dispatched. But ABCGesture will only activate if the events occur in order A-B-C. When that happens, ABCGesture will fire to each behavior that is attached to it.
+
+In this example, it can be said that there B has a dependency on A occuring, and C has a dependency on the A-B sequence occuring. This can be modeled thusly:
+<A>
+  <B>
+    <C/>
+  </B>
+</A>
+where <a/> is the root node in a hierarchical state machine.
+
+ABCGesture may receive an event stream like this: A-C-B-A-[A-B-C]-C-A-B-B. The events outlined in brackets are the sequence that trigger the gesture to fire, and they are passed to each Behavior as a list.
